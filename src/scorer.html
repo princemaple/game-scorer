@@ -1,0 +1,14 @@
+<score class="score-container" color="$ctrl.leftColor"></score>
+<score class="score-container" color="$ctrl.rightColor"></score>
+
+<div class="colors-container" ng-if="$ctrl.picking">
+  <md-list class="colors">
+    <md-list-item ng-repeat="color in $ctrl.colors">
+      <md-button class="md-raised"
+          ng-style="{ background: color }"
+          ng-click="$ctrl.pick(color)">
+        {{$ctrl.picking}}
+      </md-button>
+    </md-list-item>
+  </md-list>
+</div>
