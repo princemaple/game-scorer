@@ -85,6 +85,9 @@
 
 	    this.down = function (points) {
 	      _this2.score -= points;
+	      if (_this2.score < 0) {
+	        _this2.score = 0;
+	      }
 	    };
 	  }
 	});

@@ -44,6 +44,7 @@ angular.module('app', ['ngAria', 'ngAnimate', 'ngMaterial'])
 
     this.down = (points) => {
       this.score -= points;
+      if (this.score < 0) { this.score = 0; }
     };
   }
 });
