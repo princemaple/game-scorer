@@ -1,5 +1,6 @@
   <div class="score-content"
       ng-style="{ background: $ctrl.color }"
+      ng-dblclick="$ctrl.up(1)"
       md-swipe-right="$ctrl.up(2)" md-swipe-up="$ctrl.up(3)"
       md-swipe-left="$ctrl.down(2)" md-swipe-down="$ctrl.down(3)">
     <span class="score">{{$ctrl.score}}</span>

@@ -93,7 +93,7 @@
 /* 1 */
 /***/ function(module, exports) {
 
-	module.exports = "  <div class=\"score-content\"\n      ng-style=\"{ background: $ctrl.color }\"\n      md-swipe-right=\"$ctrl.up(2)\" md-swipe-up=\"$ctrl.up(3)\"\n      md-swipe-left=\"$ctrl.down(2)\" md-swipe-down=\"$ctrl.down(3)\">\n    <span class=\"score\">{{$ctrl.score}}</span>\n  </div>\n";
+	module.exports = "  <div class=\"score-content\"\n      ng-style=\"{ background: $ctrl.color }\"\n      ng-dblclick=\"$ctrl.up(1)\"\n      md-swipe-right=\"$ctrl.up(2)\" md-swipe-up=\"$ctrl.up(3)\"\n      md-swipe-left=\"$ctrl.down(2)\" md-swipe-down=\"$ctrl.down(3)\">\n    <span class=\"score\">{{$ctrl.score}}</span>\n  </div>\n";
 
 /***/ },
 /* 2 */,
