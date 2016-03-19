@@ -46,15 +46,14 @@
 
 	'use strict';
 
-	angular.module('app', ['ngAria', 'ngAnimate', 'ngMaterial']).component('scorer', {
-	  template: __webpack_require__(7),
-	  controller: function controller() {
+	angular.module('app', ['ngAnimate', 'ngMaterial']).value('colors', ['red', 'green', 'blue', 'orange', 'pink', 'purple', 'cyan', 'yellow']).component('scorer', {
+	  template: __webpack_require__(1),
+	  controller: ["colors", function controller(colors) {
 	    var _this = this;
 
-	    this.leftColor = 'red';
-	    this.rightColor = 'green';
-
-	    this.colors = Object.freeze(['red', 'green', 'blue', 'orange', 'pink', 'purple', 'cyan', 'yellow']);
+	    this.colors = colors;
+	    this.leftColor = colors[0];
+	    this.rightColor = colors[1];
 
 	    this.picking = '<';
 
@@ -67,13 +66,13 @@
 	        _this.picking = null;
 	      }
 	    };
-	  }
+	  }]
 	}).component('score', {
 	  bindings: {
 	    points: '@',
 	    color: '<'
 	  },
-	  template: __webpack_require__(1),
+	  template: __webpack_require__(2),
 	  controller: function controller() {
 	    var _this2 = this;
 
@@ -96,18 +95,13 @@
 /* 1 */
 /***/ function(module, exports) {
 
-	module.exports = "  <div class=\"score-content\"\n      ng-style=\"{ background: $ctrl.color }\"\n      ng-dblclick=\"$ctrl.up(1)\"\n      md-swipe-right=\"$ctrl.up(2)\" md-swipe-up=\"$ctrl.up(3)\"\n      md-swipe-left=\"$ctrl.down(2)\" md-swipe-down=\"$ctrl.down(3)\">\n    <span class=\"score\">{{$ctrl.score}}</span>\n  </div>\n";
+	module.exports = "<score class=\"score-container\" color=\"$ctrl.leftColor\"></score>\n<score class=\"score-container\" color=\"$ctrl.rightColor\"></score>\n\n<div class=\"colors-container\" ng-if=\"$ctrl.picking\">\n  <md-list class=\"colors\">\n    <md-list-item ng-repeat=\"color in $ctrl.colors\">\n      <md-button class=\"md-raised\"\n          ng-style=\"{ background: color }\"\n          ng-click=\"$ctrl.pick(color)\">\n        {{$ctrl.picking}}\n      </md-button>\n    </md-list-item>\n  </md-list>\n</div>\n";
 
 /***/ },
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 2 */
 /***/ function(module, exports) {
 
-	module.exports = "<score class=\"score-container\" color=\"$ctrl.leftColor\"></score>\n<score class=\"score-container\" color=\"$ctrl.rightColor\"></score>\n\n<div class=\"colors-container\" ng-if=\"$ctrl.picking\">\n  <md-list class=\"colors\">\n    <md-list-item ng-repeat=\"color in $ctrl.colors\">\n      <md-button class=\"md-raised\"\n          ng-style=\"{ background: color }\"\n          ng-click=\"$ctrl.pick(color)\">\n        {{$ctrl.picking}}\n      </md-button>\n    </md-list-item>\n  </md-list>\n</div>\n";
+	module.exports = "  <div class=\"score-content\"\n      ng-style=\"{ background: $ctrl.color }\"\n      ng-dblclick=\"$ctrl.up(1)\"\n      md-swipe-right=\"$ctrl.up(2)\" md-swipe-up=\"$ctrl.up(3)\"\n      md-swipe-left=\"$ctrl.down(2)\" md-swipe-down=\"$ctrl.down(3)\">\n    <span class=\"score\">{{$ctrl.score}}</span>\n  </div>\n";
 
 /***/ }
 /******/ ]);

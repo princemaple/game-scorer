@@ -1,20 +1,20 @@
-angular.module('app', ['ngAria', 'ngAnimate', 'ngMaterial'])
+angular.module('app', ['ngAnimate', 'ngMaterial'])
+.value('colors', [
+  'red',
+  'green',
+  'blue',
+  'orange',
+  'pink',
+  'purple',
+  'cyan',
+  'yellow'
+])
 .component('scorer', {
   template: require('html!./scorer.html'),
-  controller() {
-    this.leftColor = 'red';
-    this.rightColor = 'green';
-
-    this.colors = Object.freeze([
-      'red',
-      'green',
-      'blue',
-      'orange',
-      'pink',
-      'purple',
-      'cyan',
-      'yellow'
-    ]);
+  controller(colors) {
+    this.colors = colors;
+    this.leftColor = colors[0];
+    this.rightColor = colors[1];
 
     this.picking = '<';
 
