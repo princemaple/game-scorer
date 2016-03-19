@@ -1,0 +1,10 @@
+<team [color]="leftColor" #leftTeam></team>
+<team [color]="rightColor" #rightTeam></team>
+
+<div class="colors-container" *ngIf="picking">
+  <ul class="colors">
+    <li *ngFor="#color of colors">
+      <button (click)="pick(color)">{{color}}</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>game scorer demo</title>
+</head>
+<body>
+  <scorer></scorer>
+  <script src="https://code.angularjs.org/2.0.0-beta.11/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/tools/system.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.11/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.11/angular2.dev.js"></script>
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    System.import('app/main').then(null, console.error.bind(console));
+  </script>
+</body>
+</html>
