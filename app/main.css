@@ -87,6 +87,42 @@
   position: relative;
 }
 
+.team .players {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.team .player {
+  width: 200px;
+  color: #fff;
+}
+
+.team .player {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.team.left-team .players {
+  left: 0
+}
+
+.team.left-team .player {
+  text-align: left;
+  background: linear-gradient(to right, rgba(0, 0, 0, .7), transparent);
+}
+
+.team.right-team .players {
+  right: 0
+}
+
+.team.right-team .player {
+  text-align: right;
+  background: linear-gradient(to left, rgba(0, 0, 0, .7), transparent);
+}
+
 .colors {
   position: absolute;
   top: 0;
