@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../team/team', '../bench/bench', '../stats/stats'], function(exports_1, context_1) {
+System.register(['angular2/core', '../team/team'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', '../team/team', '../bench/bench', '../stats/st
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, team_1, bench_1, stats_1;
-    var AppComponent;
+    var core_1, team_1;
+    var StatsComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,32 +19,38 @@ System.register(['angular2/core', '../team/team', '../bench/bench', '../stats/st
             },
             function (team_1_1) {
                 team_1 = team_1_1;
-            },
-            function (bench_1_1) {
-                bench_1 = bench_1_1;
-            },
-            function (stats_1_1) {
-                stats_1 = stats_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            StatsComponent = (function () {
+                function StatsComponent() {
+                    this.isOpen = false;
                 }
-                AppComponent = __decorate([
+                StatsComponent.prototype.toggle = function () {
+                    this.isOpen = !this.isOpen;
+                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', team_1.TeamComponent)
+                ], StatsComponent.prototype, "leftTeam", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', team_1.TeamComponent)
+                ], StatsComponent.prototype, "rightTeam", void 0);
+                StatsComponent = __decorate([
                     core_1.Component({
-                        selector: 'scorer',
-                        templateUrl: 'app/components/scorer/scorer.html',
-                        directives: [team_1.TeamComponent, bench_1.BenchComponent, stats_1.StatsComponent],
+                        selector: 'stats',
+                        templateUrl: 'app/components/stats/stats.html',
                         host: {
-                            class: 'scorer'
+                            class: 'stats',
+                            '[class.open]': 'isOpen'
                         }
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], StatsComponent);
+                return StatsComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("StatsComponent", StatsComponent);
         }
     }
 });
-//# sourceMappingURL=scorer.js.map
+//# sourceMappingURL=stats.js.map
