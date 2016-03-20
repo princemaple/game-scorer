@@ -59,11 +59,27 @@
   color: #fff;
 }
 
+.bench .player > .assign {
+  cursor: pointer;
+}
+
 .new-player-input {
   width: 240px;
   font-size: 24px;
   text-align: center;
   margin-top: 8px;
+  background-color: #777;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+
+.new-player-input::placeholder {
+  color: white;
+}
+
+.new-player-input:focus {
+  border-bottom: 1px solid #0599f8;
 }
 
 .team {
