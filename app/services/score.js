@@ -6,9 +6,10 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             Score = (function () {
-                function Score(points, when) {
+                function Score(player, points) {
+                    this.player = player;
                     this.points = points;
-                    this.when = when;
+                    this.when = new Date();
                 }
                 return Score;
             }());

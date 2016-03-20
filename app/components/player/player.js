@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../services/player'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../services/player', '../../services/score'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../../services/player'], function(exports_1, 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, player_1;
+    var core_1, player_1, score_1;
     var PlayerComponent;
     return {
         setters:[
@@ -19,15 +19,46 @@ System.register(['angular2/core', '../../services/player'], function(exports_1, 
             },
             function (player_1_1) {
                 player_1 = player_1_1;
+            },
+            function (score_1_1) {
+                score_1 = score_1_1;
             }],
         execute: function() {
             PlayerComponent = (function () {
                 function PlayerComponent() {
+                    this.action = false;
+                    this.rest = new core_1.EventEmitter();
+                    this.score = new core_1.EventEmitter();
                 }
+                PlayerComponent.prototype.toggle = function () {
+                    this.action = !this.action;
+                };
+                PlayerComponent.prototype.addScore = function (points) {
+                    var score = new score_1.Score(this.player, points);
+                    this.player.scores.push(score);
+                    this.score.emit(score);
+                };
+                PlayerComponent.prototype.goRest = function () {
+                    this.rest.emit({});
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', player_1.Player)
                 ], PlayerComponent.prototype, "player", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], PlayerComponent.prototype, "rest", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], PlayerComponent.prototype, "score", void 0);
+                __decorate([
+                    core_1.HostListener('click'), 
+                    __metadata('design:type', Function), 
+                    __metadata('design:paramtypes', []), 
+                    __metadata('design:returntype', void 0)
+                ], PlayerComponent.prototype, "toggle", null);
                 PlayerComponent = __decorate([
                     core_1.Component({
                         selector: 'player',

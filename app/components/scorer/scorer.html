@@ -1,4 +1,4 @@
-<team class="left-team" #leftTeam [playerLimit]="5"></team>
-<team class="right-team" #rightTeam [playerLimit]="5"></team>
+<team class="left-team" #leftTeam [playerLimit]="5" [bench]="bench"></team>
+<team class="right-team" #rightTeam [playerLimit]="5" [bench]="bench"></team>
 
-<bench [leftTeam]="leftTeam" [rightTeam]="rightTeam"></bench>
+<bench #bench [leftTeam]="leftTeam" [rightTeam]="rightTeam"></bench>

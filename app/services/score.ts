@@ -1,6 +1,12 @@
+import {Player} from './player';
+
 export class Score {
+  when: Date;
+
   constructor(
-    public points: number,
-    public when: Date
-  ) {}
+    public player: Player,
+    public points: number
+  ) {
+    this.when = new Date();
+  }
 }

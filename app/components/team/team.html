@@ -8,5 +8,6 @@
 </div>
 
 <div class="players">
-  <player *ngFor="#player of players" [player]="player"></player>
+  <player *ngFor="#player of players" [player]="player"
+      (rest)="removePlayer(player)" (score)="addScore($event)"></player>
 </div>
