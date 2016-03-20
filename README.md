@@ -1,6 +1,6 @@
 # game-scorer
 
-[live app](https://rawgit.com/princemaple/game-scorer/master/app.html)
+[live app](https://rawgit.com/princemaple/game-scorer/master/index.html)
 
 1. choose your colors
 1. start keeping the scores
