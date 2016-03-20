@@ -1,14 +1,12 @@
-team color: {{color}}
-<span class="score">{{score}}</span>
+<div class="score">{{score}}</div>
 
-<div class="colors-container" *ngIf="!color">
-  <ul class="colors">
-    <li *ngFor="#c of colors">
-      <button (click)="pickColor(c)">{{c}}</button>
-    </li>
-  </ul>
+<div class="colors" *ngIf="!color">
+  <div class="color" *ngFor="#c of colors"
+      (click)="pickColor(c)"
+      [style.background-color]="c">
+  </div>
 </div>
 
-<div *ngFor="#player of players" (click)="player.addScore(2)">
-  {{player.name}} - {{player.score}}
+<div class="players">
+  <player *ngFor="#player of players" [player]="player"></player>
 </div>

@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../team/team', '../bench/bench'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../services/player'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,38 +10,38 @@ System.register(['angular2/core', '../team/team', '../bench/bench'], function(ex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, team_1, bench_1;
-    var AppComponent;
+    var core_1, player_1;
+    var PlayerComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (team_1_1) {
-                team_1 = team_1_1;
-            },
-            function (bench_1_1) {
-                bench_1 = bench_1_1;
+            function (player_1_1) {
+                player_1 = player_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            PlayerComponent = (function () {
+                function PlayerComponent() {
                 }
-                AppComponent = __decorate([
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', player_1.Player)
+                ], PlayerComponent.prototype, "player", void 0);
+                PlayerComponent = __decorate([
                     core_1.Component({
-                        selector: 'scorer',
-                        templateUrl: 'app/components/scorer/scorer.html',
-                        directives: [team_1.TeamComponent, bench_1.BenchComponent],
+                        selector: 'player',
+                        templateUrl: 'app/components/player/player.html',
                         host: {
-                            class: 'scorer'
+                            class: 'player'
                         }
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], PlayerComponent);
+                return PlayerComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("PlayerComponent", PlayerComponent);
         }
     }
 });
-//# sourceMappingURL=scorer.js.map
+//# sourceMappingURL=player.js.map

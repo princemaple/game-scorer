@@ -1,3 +1,104 @@
 * {
   outline: none;
 }
+
+.scorer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.bench {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transition: all .3s ease-in-out;
+  transform: translate(-50%, 100%);
+  background-color: rgba(0, 0, 0, .7);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 8px;
+}
+
+.bench.open {
+  transform: translate(-50%, 0);
+}
+
+.bench-handle {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 48px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .7);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  line-height: 0;
+}
+
+.bench-handle svg {
+  transition: all .3s ease-in-out;
+}
+
+.open .bench-handle svg {
+  transform: rotateX(180deg);
+}
+
+.bench .player {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+}
+
+.new-player-input {
+  width: 240px;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.team {
+  position: relative;
+}
+
+.colors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.color {
+  cursor: pointer;
+  width: 180px;
+  box-sizing: border-box;
+  padding: 24px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.score {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 480px;
+  text-shadow: 0 0 50px #555;
+}

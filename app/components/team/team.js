@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../services/player'], function(exports_1, context_1) {
+System.register(['angular2/core', '../player/player'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -33,16 +33,12 @@ System.register(['angular2/core', '../../services/player'], function(exports_1, 
             ];
             TeamComponent = (function () {
                 function TeamComponent() {
-                    var _this = this;
                     this.colors = colors;
-                    this.players = [];
-                    ['a', 'b', 'c', 'd'].forEach(function (p) {
-                        _this.addPlayer(new player_1.Player(p));
-                    });
+                    this.players = new Set();
                 }
                 Object.defineProperty(TeamComponent.prototype, "score", {
                     get: function () {
-                        return this.players.reduce(function (score, player) { return score + player.score; }, 0);
+                        return Array.from(this.players.values()).reduce(function (score, player) { return score + player.score; }, 0);
                     },
                     enumerable: true,
                     configurable: true
@@ -51,16 +47,18 @@ System.register(['angular2/core', '../../services/player'], function(exports_1, 
                     this.color = color;
                 };
                 TeamComponent.prototype.addPlayer = function (player) {
-                    if (this.players.length >= this.playerLimit) {
-                        return console.error('too many players');
+                    if (this.players.size >= this.playerLimit) {
+                        return false;
                     }
-                    this.players.push(player);
+                    this.players.add(player);
+                    return true;
                 };
-                TeamComponent.prototype.swapPlayer = function (onCourtPlayer, onBenchPlayer) {
-                    var playerIndex = this.players.findIndex(function (p) { return p == onCourtPlayer; });
-                    this.players = this.players.slice(0, playerIndex).concat([
-                        onBenchPlayer
-                    ], this.players.slice(playerIndex + 1));
+                TeamComponent.prototype.removePlayer = function (player) {
+                    if (this.players.has(player)) {
+                        this.players.delete(player);
+                        return true;
+                    }
+                    return false;
                 };
                 __decorate([
                     core_1.Input(), 
@@ -70,7 +68,9 @@ System.register(['angular2/core', '../../services/player'], function(exports_1, 
                     core_1.Component({
                         selector: 'team',
                         templateUrl: 'app/components/team/team.html',
+                        directives: [player_1.PlayerComponent],
                         host: {
+                            class: 'team',
                             '[style.backgroundColor]': 'color',
                             '[style.flex]': '1'
                         }

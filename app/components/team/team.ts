@@ -1,4 +1,7 @@
 import {Component, Input} from 'angular2/core';
+
+import {PlayerComponent} from '../player/player';
+
 import {Player} from '../../services/player';
 
 let colors = [
@@ -15,7 +18,9 @@ let colors = [
 @Component({
   selector: 'team',
   templateUrl: 'app/components/team/team.html',
+  directives: [PlayerComponent],
   host: {
+    class: 'team',
     '[style.backgroundColor]': 'color',
     '[style.flex]': '1'
   }
@@ -23,39 +28,39 @@ let colors = [
 export class TeamComponent {
   colors = colors;
   color: string;
-  players: Player[] = [];
+  players: Set<Player>;
+
+  constructor() {
+    this.players = new Set<Player>();
+  }
 
   @Input() playerLimit: number;
 
-  constructor() {
-    ['a', 'b', 'c', 'd'].forEach(p => {
-      this.addPlayer(new Player(p));
-    });
-  }
-
   get score() {
-    return this.players.reduce((score, player) => score + player.score, 0);
+    return Array.from(this.players.values()).reduce(
+      (score, player) => score + player.score,
+      0
+    );
   }
 
   pickColor(color:string) {
     this.color = color;
   }
 
-  addPlayer(player:Player) {
-    if (this.players.length >= this.playerLimit) {
-      return console.error('too many players');
+  addPlayer(player:Player) : Boolean {
+    if (this.players.size >= this.playerLimit) {
+      return false;
     }
 
-    this.players.push(player);
+    this.players.add(player);
+    return true;
   }
 
-  swapPlayer(onCourtPlayer:Player, onBenchPlayer:Player) {
-    let playerIndex = this.players.findIndex(p => p == onCourtPlayer);
-
-    this.players = [
-      ...this.players.slice(0, playerIndex),
-      onBenchPlayer,
-      ...this.players.slice(playerIndex + 1)
-    ];
+  removePlayer(player:Player) : Boolean {
+    if (this.players.has(player)) {
+      this.players.delete(player);
+      return true;
+    }
+    return false;
   }
 }
