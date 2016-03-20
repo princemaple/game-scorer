@@ -11,7 +11,7 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, team_1;
-    var colors, AppComponent;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -21,26 +21,9 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
                 team_1 = team_1_1;
             }],
         execute: function() {
-            colors = [
-                'red',
-                'green',
-                'blue',
-                'orange',
-                'pink',
-                'purple',
-                'cyan',
-                'yellow'
-            ];
             AppComponent = (function () {
                 function AppComponent() {
-                    this.leftColor = colors[0];
-                    this.rightColor = colors[1];
-                    this.colors = colors;
-                    this.picking = true;
                 }
-                AppComponent.prototype.pick = function (team, color) {
-                    team.color = color;
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'scorer',
