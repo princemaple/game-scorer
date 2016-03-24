@@ -1,6 +1,6 @@
 # game-scorer
 
-## for casual basketball games
+### for casual basketball games
 
 #### definition of `casual`
 
