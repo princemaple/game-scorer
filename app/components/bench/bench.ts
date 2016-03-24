@@ -16,7 +16,7 @@ export class BenchComponent {
   players: Player[] = [];
   newPlayerName: string;
 
-  isOpen = false;
+  isOpen = true;
 
   @Input() leftTeam: TeamComponent;
   @Input() rightTeam: TeamComponent;

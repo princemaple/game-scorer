@@ -27,7 +27,7 @@ System.register(['angular2/core', '../team/team', '../../services/player'], func
             BenchComponent = (function () {
                 function BenchComponent() {
                     this.players = [];
-                    this.isOpen = false;
+                    this.isOpen = true;
                 }
                 BenchComponent.prototype.toggle = function (newPlayerInput) {
                     this.isOpen = !this.isOpen;
