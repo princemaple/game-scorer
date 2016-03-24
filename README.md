@@ -1,5 +1,9 @@
 # game-scorer
 
+## for causual basketball games
+
+*casual because it's made in a way that individual can switch between teams during a game*
+
 [live app](https://rawgit.com/princemaple/game-scorer/master/index.html)
 
 1. choose your colors
