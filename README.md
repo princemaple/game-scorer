@@ -1,8 +1,12 @@
 # game-scorer
 
-## for causual basketball games
+## for casual basketball games
 
-*casual because it's made in a way that individual can switch between teams during a game*
+#### definition of `casual`
+
+- no foul count
+- no free throws
+- player can switch team
 
 [live app](https://rawgit.com/princemaple/game-scorer/master/index.html)
 
