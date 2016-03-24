@@ -28,6 +28,25 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
                 StatsComponent.prototype.toggle = function () {
                     this.isOpen = !this.isOpen;
                 };
+                Object.defineProperty(StatsComponent.prototype, "scoreHistory", {
+                    get: function () {
+                        var leftColor = this.leftTeam.color;
+                        var rightColor = this.rightTeam.color;
+                        var leftScores = this.leftTeam.scores.map(function (s) {
+                            s.color = leftColor;
+                            s.side = 'left';
+                            return s;
+                        });
+                        var rightScores = this.rightTeam.scores.map(function (s) {
+                            s.color = rightColor;
+                            s.side = 'right';
+                            return s;
+                        });
+                        return leftScores.concat(rightScores).sort(function (s1, s2) { return s1.when < s2.when ? -1 : 1; });
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', team_1.TeamComponent)

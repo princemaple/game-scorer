@@ -5,4 +5,9 @@
   </svg>
 </div>
 
-There will be stats
+<div class="score-history">
+  <div class="score-mark-container" [ngClass]="score.side" *ngFor="#score of scoreHistory"
+      [class.three]="score.points == 3" [class.two]="score.points == 2">
+    <div class="score-mark" [style.background-color]="score.color" [title]="score.when"></div>
+  </div>
+</div>
