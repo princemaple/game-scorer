@@ -13,3 +13,4 @@
     - add 2 points
     - add 3 points
     - bench
+1. check stats in the top section
