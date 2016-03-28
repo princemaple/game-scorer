@@ -11,3 +11,8 @@
     <div class="score-mark" [style.background-color]="score.color" [title]="score.when"></div>
   </div>
 </div>
+
+<div class="stats-table">
+  <team-stats [scores]="leftTeam.scores"></team-stats>
+  <team-stats [scores]="rightTeam.scores"></team-stats>
+</div>

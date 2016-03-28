@@ -11,7 +11,7 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, team_1;
-    var StatsComponent;
+    var TeamStatsComponent, StatsComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -21,6 +21,44 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
                 team_1 = team_1_1;
             }],
         execute: function() {
+            TeamStatsComponent = (function () {
+                function TeamStatsComponent() {
+                }
+                Object.defineProperty(TeamStatsComponent.prototype, "scoreByPlayers", {
+                    get: function () {
+                        var scoreByPlayerMap = this.scores.reduce(function (dict, score) {
+                            var playerName = score.player.name;
+                            if (!dict[playerName]) {
+                                dict[playerName] = 0;
+                            }
+                            dict[playerName] += score.points;
+                            return dict;
+                        }, {});
+                        var scoreByPlayers = [];
+                        for (var player in scoreByPlayerMap) {
+                            scoreByPlayers.push({ player: player, score: scoreByPlayerMap[player] });
+                        }
+                        return scoreByPlayers;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Array)
+                ], TeamStatsComponent.prototype, "scores", void 0);
+                TeamStatsComponent = __decorate([
+                    core_1.Component({
+                        selector: 'team-stats',
+                        templateUrl: 'app/components/stats/team-stats.html',
+                        host: {
+                            class: 'team-stats'
+                        }
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], TeamStatsComponent);
+                return TeamStatsComponent;
+            }());
             StatsComponent = (function () {
                 function StatsComponent() {
                     this.isOpen = false;
@@ -59,6 +97,7 @@ System.register(['angular2/core', '../team/team'], function(exports_1, context_1
                     core_1.Component({
                         selector: 'stats',
                         templateUrl: 'app/components/stats/stats.html',
+                        directives: [TeamStatsComponent],
                         host: {
                             class: 'stats',
                             '[class.open]': 'isOpen'

@@ -2,9 +2,46 @@ import {Component, Input} from 'angular2/core';
 
 import {TeamComponent} from '../team/team';
 
+import {Player} from '../../services/player';
+import {Score} from '../../services/score';
+
+@Component({
+  selector: 'team-stats',
+  templateUrl: 'app/components/stats/team-stats.html',
+  host: {
+    class: 'team-stats'
+  }
+})
+class TeamStatsComponent {
+  @Input() scores: Score[];
+
+  get scoreByPlayers() {
+    let scoreByPlayerMap = this.scores.reduce((dict, score) => {
+      let playerName = score.player.name;
+
+      if (!dict[playerName]) {
+        dict[playerName] = 0;
+      }
+
+      dict[playerName] += score.points;
+
+      return dict;
+    }, {});
+
+    let scoreByPlayers = []
+
+    for (let player in scoreByPlayerMap) {
+      scoreByPlayers.push({ player: player, score: scoreByPlayerMap[player] });
+    }
+
+    return scoreByPlayers;
+  }
+}
+
 @Component({
   selector: 'stats',
   templateUrl: 'app/components/stats/stats.html',
+  directives: [TeamStatsComponent],
   host: {
     class: 'stats',
     '[class.open]': 'isOpen'

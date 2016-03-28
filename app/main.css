@@ -347,3 +347,22 @@
 .two > .score-mark {
   padding: 6px;
 }
+
+.stats-table {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.team-stats {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.player-score {
+  color: #fff;
+  text-align: center;
+}
