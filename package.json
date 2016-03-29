@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "dev": "concurrently \"npm run tsc:w\" \"npm run postcss:w\" ",
+    "tsc": "tsc",
     "tsc:w": "tsc -w",
     "postcss:w": "postcss -u autoprefixer -u postcss-nested -w -o app/main.css app/main.postcss",
     "typings": "typings",
